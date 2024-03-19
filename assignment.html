@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="assignment.css"> -->
+    <Style>
+        *{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    height: 25px;
+    width: 300px;
+    background-color: yellow;
+    
+}
+
+footer{
+    height: 80px;
+    width: 300px;
+    
+    background-color: yellow;
+    color: black;
+    cursor: pointer;
+    padding-left: 10px;
+}
+nav>h1{
+    height: 5px;
+    width: 300px;
+    
+    background-color: yellow;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding-left: 60px;
+    
+}
+#latestStories{
+ align-items: end;
+
+}
+#maindiv{
+    display: flex;
+    justify-content: space-between;
+}
+#featured{
+    height: 620px;
+    width: 1000px;
+    
+    padding-left: 100px;
+}
+
+#navbar{
+    height: 50px;
+    width: 100%;
+    border-bottom: 2px;
+    background-color: rgb(248, 244, 244);
+}
+    .logo-container {
+        height: 48px;
+       width: 120px;
+       padding-left: 10px;
+       padding-top: 8px;
+    }
+
+    .logo {
+        max-width: 100%;
+        height: auto;
+    }
+    #featured2{
+        height: 800px;
+        width: 600px;
+        display: flex;
+        
+        justify-content: space-between;
+    }
+
+    #content1{
+        
+     padding-top: 30px;
+    }
+
+    #content2{
+        padding-top: 30px;
+    }
+    input{
+        position: absolute;
+        right: 150px;
+        top:15px;
+        border-radius: 0px;
+        border-width: 0px;
+        height: 20px;
+
+    }
+    </Style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="logo-container">
+            <img class="logo" src="./logo.png" alt="Company Logo">
+
+            <input type="text" placeholder=" search..">
+        </div>
+    </nav>
+
+    <div id="maindiv">
+        <div id="featured">
+            <h1>FEATURED VOICES</h1>
+
+            <div id="featured2">
+                <div id="content1">
+                <dl style="height: 100px; width: 250px;">
+                    <dt style="color: red;font-size: x-large;">Anatol Lieven:</dt>
+                    <dd style="font-size: medium;">Russia Has Been Warning the West About Ukraine for Decades.</dd>
+                    <br><br><br>
+                    <dt style="color: red;font-size: x-large;">Ismat Ara:</dt>
+                    <dd style="font-size: medium;">How It Feels to Be a Muslim Woman Sold by India's Right Wing </dd>
+                    <br><br><br>
+                    <dt style="color: red;font-size: x-large;">Robert J. Davis:</dt>
+                    <dd style="font-size: medium;">Why You Shouldn't Exercise to Lose Weight</dd>
+                </dl>
+
+                </div>
+
+                <div id="content2">
+                    <dl style="height: 60px; width: 250px;">
+                        <dt style="color: red;font-size: x-large;">Yohanca Delgado:</dt>
+                        <dd style="font-size: medium;">The Life-Changing Practice That Will Help You Feel More Gratitude</dd>
+                        <br><br><br>
+                        <dt style="color: red;font-size: x-large;">W. Kamau Bell:</dt>
+                        <dd style="font-size: medium;">There's So Much More To Say About Bill Cosby </dd>
+                        <br><br><br>
+                        <dt style="color: red;font-size: x-large;">Christina Bu:</dt>
+                        <dd style="font-size: medium;">What Norway Can Teach the World About Switching to Electric Vehicles</dd>
+                    </dl>
+                </div>
+                
+            </div>
+        </div>
+  <div id="latestStories">
+      <nav>
+        <h1><strong>LATEST STORIES</strong></h1>
+        <footer id="title"></footer>
+        <header id="date"></header>
+        <footer id="title1"></footer>
+        <header id="date1"></header>
+        <footer id="title2"></footer>
+        <header id="date2"></header>
+        <footer id="title3"></footer>
+        <header id="date3"></header>
+        <footer id="title4"></footer>
+        <header id="date4"></header>
+        <footer id="title5"></footer>
+        <header id="date5"></header>
+        <footer id="title5"></footer>
+        </nav>
+  </div>
+</div>
+     
+    <!-- <script src="assignment.js"></script> -->
+    <script>
+        let title=document.getElementById("title");
+let title1=document.getElementById("title1");
+let title2=document.getElementById("title2");
+let title3=document.getElementById("title3");
+let title4=document.getElementById("title4");
+let title5=document.getElementById("title5");
+let date=document.getElementById("date");
+let date1=document.getElementById("date1");
+let date2=document.getElementById("date2");
+let date3=document.getElementById("date3");
+let date4=document.getElementById("date4");
+let date5=document.getElementById("date5");
+
+const ApiKey = "eeb1bc8ff502470c8400eb4afd79661a";
+const url = "https://newsapi.org/v2/everything?q=";
+
+function fetchData() {
+    const pageSize = 7; 
+    const sortBy = 'publishedAt';
+    let query="india";
+    fetch(`${url}${query}&pageSize=${pageSize}&sortBy=${sortBy}&apikey=${ApiKey}`)
+    .then(response => response.json())
+    .then(data => {
+    date.innerHTML+=` ${ data.articles[0].publishedAt}`;
+    title1.innerHTML+= data.articles[1].title;
+    date1.innerHTML+=` ${ data.articles[1].publishedAt}`;
+    title2.innerHTML+= data.articles[2].title;
+    date2.innerHTML+=` ${ data.articles[2].publishedAt}`;
+    title3.innerHTML+= data.articles[3].title;
+    date3.innerHTML+=` ${ data.articles[3].publishedAt}`;
+    title4.innerHTML+= data.articles[4].title;
+    date4.innerHTML+=` ${ data.articles[4].publishedAt}`;
+    title5.innerHTML+= data.articles[5].title;
+    date5.innerHTML+=` ${ data.articles[5].publishedAt}`;
+
+    console.log(data);
+    title.addEventListener("click",()=>{
+        window.open(data.articles[0].url, "_blank");
+
+    });
+    title1.addEventListener("click",()=>{
+        window.open(data.articles[1].url, "_blank");
+
+    });
+    title2.addEventListener("click",()=>{
+
+        window.open(data.articles[2].url, "_blank");
+
+    });
+    title3.addEventListener("click",()=>{
+
+        window.open(data.articles[3].url, "_blank");
+
+    });
+    title4.addEventListener("click",()=>{
+
+        window.open(data.articles[4].url, "_blank");
+
+    });
+    title5.addEventListener("click",()=>{
+
+        window.open(data.articles[5].url, "_blank");
+
+    });
+    })
+ }
+
+ fetchData();
+    </script>
+</body>
+</html>
